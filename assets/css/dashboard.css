@@ -18,15 +18,11 @@ body {
 
 .side_bar {
     width: 15%;
-    /* margin: 15px 0 0 20px; */
-    /* padding: 10px; */
     background-color: inherit;
 }
 
 .dashboard_owner_container{
-    /* text-align: center; */
     position: relative;
-    /* margin: 15px 15px 0px 15px; */
 }
 
 .dashboard_owner_container::after {
@@ -41,10 +37,7 @@ body {
 }
 
 .dashboard_owner_container img {
-    /* height: auto; */
     width: -webkit-fill-available;
-    /* border-radius: 10%; */
-    /* text-align: center; */
     margin: 15px 15px 0px 15px;
 }
 
