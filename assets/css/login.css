@@ -1,0 +1,48 @@
+body {
+ background-color: rgb(255, 255, 255);
+ text-align: center;
+}
+
+.mainBody {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    font-style: normal;
+}
+
+.logo_header img {
+    height: 100px;
+    width: auto;
+}
+
+.loginBody {
+    height: auto;
+    padding: 10px;
+    border: 2px solid #7c695c;
+    width: 32%;
+    margin: 0px auto;
+    border-radius: 6px;
+    background-color: #cb8c221f;
+}
+
+.userInput {
+    text-align: left;
+    margin: 10px 0 0 15px;
+}
+
+ label {
+    display: block;
+    margin: 0 0 5px 0;
+}
+
+input {
+    width: 90%;
+    padding: 5px 0 3px 7px;
+}
+
+.passInput {
+    text-align: left;
+}
+
+.Loginrow {
+    margin: 10px 0 0 15px;
+    text-align: left;
+}
