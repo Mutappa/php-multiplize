@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <form action="../database/add-listing.php" method="post" id="add_listingForm">
         <div class="formBody">
             <h2> Property Details</h2>
             <div class="form_elements">

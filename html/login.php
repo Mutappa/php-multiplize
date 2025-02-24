@@ -6,7 +6,7 @@
 
     $error_message = '' ;
     if($_POST) {
-        include('database/connections.php');
+        include('../database/connections.php');
         
         $username = $_POST['userName'];
         $password = $_POST['passName'];
@@ -30,14 +30,12 @@
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/login.css" rel="stylesheet">
+    <link href="../assets/css/login.css" rel="stylesheet">
     <title>Multiplize Login - Inventory Management System</title>
 </head>
 <body>
@@ -52,7 +50,7 @@
             </div>
         <?php } ?>
         <div class="logo_header">
-            <img src="assets/images/logo-1.webp" alt="logo and name">
+            <img src="../assets/images/logo-1.webp" alt="logo and name">
         </div>
         <form action="login.php" method="POST">
             <div class="loginBody">
