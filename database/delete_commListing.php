@@ -3,7 +3,7 @@
     $user_id = (int) $data['user_id'];
 
     try {    
-        $delete_method = "DELETE FROM listingresidential WHERE id={$user_id}";
+        $delete_method = "DELETE FROM listingcommercial WHERE id={$user_id}";
         include('connections.php');
 
         $conn->exec($delete_method);

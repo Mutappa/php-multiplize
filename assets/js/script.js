@@ -12,7 +12,7 @@ function deletListing(){
             targetElement = e.target;
             classList = targetElement.classList;
             
-            if(classList.contains('delete_listing')){
+            if(classList.contains('del_resListing')){
                 e.preventDefault();
                 userId = targetElement.dataset.userid;
                 console.log(userId);
@@ -37,10 +37,77 @@ function deletListing(){
                     console.log('Listing Saved');
                 }
             }
+
+            if(classList.contains('del_commListing')){
+                e.preventDefault();
+                userId = targetElement.dataset.userid;
+                console.log(userId);
+
+                if(window.confirm('This will permanently delete your listing!')){
+                    $.ajax({
+                        method: 'POST',
+                        data: {
+                            user_id: userId
+                        },
+                        url: '../database/delete_commListing.php',
+                        dataType:'json',
+                        success: function(data){
+                            if(data.success){
+                                if(window.confirm(data.message)){
+                                    location.reload();
+                                }
+                            } else window.alert(data.message);
+                        }
+                    })
+                } else {
+                    console.log('Listing Saved');
+                }
+            }
              
         })
     }
-}
+};
+
+// change background color of sidebar items on hover
+// sidebarItems = document.querySelectorAll('.tab1,.tab2');
+// sidebarItems.forEach(function(item){
+//     item.addEventListener('mouseover', function(){
+//         item.style.backgroundColor = '#f5f5f5';
+//     });
+//     item.addEventListener('mouseout', function(){
+//         item.style.backgroundColor = '#fff';
+//     });
+// });
+
+//show and hide sidebar_items dropdown
+function subMenuSideBar(){
+    document.addEventListener('click', function(e){
+        let clickedEl = e.target;
+
+        if(clickedEl.classList.contains('showHideSubmenu')){
+            let subMenu = clickedEl.closest('li').querySelector('.subMenu');
+            let sideBarItems = clickedEl.closest('li').querySelector('.dropDownArrow');
+            
+            //rotate the dropdown arrow
+            if(sideBarItems != null){
+                if(sideBarItems.style.transform == 'rotate(-90deg)') sideBarItems.style.transform = 'rotate(0deg)';
+                else sideBarItems.style.transform = 'rotate(-90deg)';
+            }
+            //check for submenu
+            if(subMenu != null){
+                if(subMenu.style.display == 'block') subMenu.style.display = 'none';
+                else subMenu.style.display = 'block';   
+            }
+        }
+    })
+};
+
+new DataTable('#listingTable', {
+    search: {
+        return: true
+    }
+});
 
 var deletListing = new deletListing;
 deletListing.intialize();
+subMenuSideBar();
