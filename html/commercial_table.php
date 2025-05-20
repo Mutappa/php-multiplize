@@ -27,7 +27,7 @@
             <div class="content_box">
                 <div class="content_header">
                     <div class="add_listing_form">
-                        <a href="add_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
+                        <a href="comm_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
                     </div>
                 </div>
                 <div class="listing_content">
@@ -63,7 +63,10 @@
                                         <td><?= $user['address'] ?></td>
                                         <td><?= $user['pincode'] ?></td>
                                         <td><?= $user['configuration'] ?></td>
-                                        <td><?= $user['sqft'] ?></td>
+                                        <td><?= $user['sqft'] ?>
+                                            <br>
+                                            <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
+                                        </td>
                                         <td><?= $user['perks'] ?></td>
                                         <td><?= $user['availability'] ?>
                                             <br>
@@ -72,7 +75,7 @@
                                         </td>
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="" class="edit_listing"><i class="fa fa-pencil"></i>Edit</a>
+                                        <a href="" class="edit_listing update_commListing"><i class="fa fa-pencil"></i>Edit</a>
                                         <a href="" class="delete_listing del_commListing" data-userid="<?= $user['id']?>"><i class="fa fa-trash"></i>Delete</a>
                                     </td>
                                 </tr>
@@ -81,6 +84,23 @@
                         </table>
                     </div>
             </div>
+        </div>
+        <div class="response_box">
+                <?php 
+                    if(isset($_SESSION['response'])){
+                        $response_message = $_SESSION['response']['message'];
+                        $listing_add = $_SESSION['response']['message'];
+                    ?>
+                    <div class="response_message">
+                        <p class="<?= $listing_add ? 'responseMessage_success' : 'responseMessage_error ?' ?> ">
+                        <?= $response_message ?>
+                        </p>
+                        <span onclick="this.parentElement.style.display='none';">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                        </span>
+                    </div>
+                <?php unset($_SESSION['response']); } ?>
+        
         </div>
     </div>
 

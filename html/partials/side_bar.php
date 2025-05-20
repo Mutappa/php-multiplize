@@ -18,11 +18,11 @@
                             </li>
                         </ul>
                     </li>  
-                    <li class="tab2 a_tags">
+                    <!-- <li class="tab2 a_tags">
                         <a href="../html/mainDashboard.php"><i class="fa-solid fa-database" aria-hidden="true"></i>
                         Dashboard
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="logout_button">
                     <a href="logout.php">

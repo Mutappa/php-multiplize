@@ -67,12 +67,19 @@
                                             <br>
                                             <span class="sub_span"><?= $user['rooms'] ?></span>
                                         </td>
-                                        <td><?= $user['sqft'] ?></td>
+                                        <td><?= $user['sqft'] ?>
+                                            <br>
+                                            <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
+                                        </td>
                                         <td><?= $user['ammenities'] ?></td>
-                                        <td><?= $user['price'] ?></td>
+                                        <td><?= $user['availability'] ?>
+                                            <br>
+                                            <span class="sub_span">₹<?= $user['price'] ?>
+                                            </span>
+                                        </td>
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="" class="edit_listing"><i class="fa fa-pencil"></i>Edit</a>
+                                        <a href="" class="edit_listing update_resListing"><i class="fa fa-pencil"></i>Edit</a>
                                         <a href="../database/delete_listing.php" class="delete_listing del_resListing" data-userid="<?= $user['id']?>"><i class="fa fa-trash"></i>Delete</a>
                                     </td>
                                 </tr>

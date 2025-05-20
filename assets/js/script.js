@@ -68,6 +68,19 @@ function deletListing(){
     }
 };
 
+// function updateListing(){
+    
+//     this.intialize = function(){
+//         this.registerEvents();
+//     },
+    
+//     this.registerEvents = function(){
+
+//     // insert data row data from table to form
+
+
+// }
+
 // change background color of sidebar items on hover
 // sidebarItems = document.querySelectorAll('.tab1,.tab2');
 // sidebarItems.forEach(function(item){

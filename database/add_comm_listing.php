@@ -1,55 +1,52 @@
 <?php 
 
     session_start();
-    // var_dump($_POST);
+    var_dump($_POST);
     
-    // $table_name = $_SESSION['table'];
+    $table_name = $_SESSION['table'];
 
-    $res_name = $_POST['res-name'];
-    $phone_number = $_POST['res-phone'];
-    $building_name = $_POST['res-building_name'];
-    $locality = $_POST['res-locality'];
-    $address = $_POST['res-address'];
-    $pincode = $_POST['res-pincode'];
-    $configuration = $_POST['res-configuration'];
-    $rooms = $_POST['res-rooms'];
-    $sqft = $_POST['res-sqft'];
-    $parking = $_POST['res-parking'];
-    $availability = $_POST['res-availability'];
-    $price = $_POST['res-price'];
+    $comm_name = $_POST['comm-name'];
+    $phone_number = $_POST['comm-phone'];
+    $building_name = $_POST['comm-building_name'];
+    $locality = $_POST['comm-locality'];
+    $address = $_POST['comm-address'];
+    $pincode = $_POST['comm-pincode'];
+    $configuration = $_POST['comm-configuration'];
+    $sqft = $_POST['comm-sqft'];
+    $parking = $_POST['comm-parking'];
+    $availability = $_POST['comm-availability'];
+    $price = $_POST['comm-price'];
     //convert ammenities to string
-    $ammenities = implode(',', $_POST['res-ammenities']);
-    $remarks = $_POST['res-remarks'];
+    $ammenities = implode(',', $_POST['comm-ammenities']);
+    $remarks = $_POST['comm-remarks'];
     // die;
     
     try {    
         $insert_method = "INSERT INTO
-                            listingresidential(res_name,
-                                        res_phone,
-                                        building_name,
+                            $table_name(name,
+                                        phone,
+                                        building_lot,
                                         locality,
                                         address,
                                         pincode,
                                         configuration,
-                                        rooms,
                                         sqft,
                                         parking,
                                         availability,
-                                        ammenities,
                                         price,
+                                        perks,
                                         remarks,
                                         date)
                      VALUES 
-                            ('".$res_name."',
+                            ('".$comm_name."',
                              '".$phone_number."',
                              '".$building_name."',
                              '".$locality."',
                              '".$address."',
                              '".$pincode."',
                              '".$configuration."',
-                             '".$rooms."',
                              '".$sqft."',
-                             '".$parking."',
+                             '".$parking."',  
                              '".$availability."',
                              '".$ammenities."',
                              '".$price."',
@@ -71,7 +68,7 @@
         }
     
     $_SESSION['response'] = $response;
-    header('location:../html/residential_table.php');
+    header('location:../html/commercial_table.php');
     // var_dump($insert_method);
 
 ?>

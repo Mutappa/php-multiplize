@@ -1,6 +1,6 @@
 <?php 
     $data = $_POST;
-    $user_id = (int) $data['user_id'];
+    $user_id = (int)$data['user_id'];
 
     try {    
         $delete_method = "DELETE FROM listingresidential WHERE id={$user_id}";

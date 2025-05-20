@@ -61,7 +61,7 @@ body {
   .res-radio-group,
   .slider-group {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     margin-top: 8px;
   }
   

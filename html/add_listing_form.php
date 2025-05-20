@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_SESSION['user'])) header('location:login.php');
 
-    $_SESSION['table'] = 'listingresidential';
+    // $_SESSION['table'] = 'listingresidential';
     $user = $_SESSION['user'];
 ?>
 
@@ -56,20 +56,33 @@
                 <input type="text" id="res-pincode" name="res-pincode" required />
             </div>
 
-            <!-- Configuration Radio -->
-            <div class="form-group res-configuration_group">
-                <label >Configuration</label>
-                <div class="res-radio-group" aria-required="true">
-                    <label>
-                        <input type="radio" class="res-configuration" name="res-configuration" value="Villa" /> 
-                        Villa</label>
-                    <label>
-                        <input type="radio" class="res-configuration"  name="res-configuration" value="Appartement" /> Appartement</label>
-                    <label>
-                        <input type="radio" class="res-configuration"  name="res-configuration" value="Row House" /> Row House</label>
+            <!-- Configuration Radio and parking -->
+            <div class="form-row res-parking_configuration"> 
+                <div class="form-group res-configuration_group">
+                    <label >Configuration</label>
+                    <div class="res-radio-group" aria-required="true">
+                        <label>
+                            <input type="radio" class="res-configuration" name="res-configuration" value="Villa" /> 
+                            Villa</label>
+                        <label>
+                            <input type="radio" class="res-configuration"  name="res-configuration" value="Appartement" /> Appartement</label>
+                        <label>
+                            <input type="radio" class="res-configuration"  name="res-configuration" value="Row House" /> Row House</label>
+                    </div>
                 </div>
+                <!-- Parking -->
+                <div class="form-group res-parking_group">
+                    <label for="res-parking">Parking</label>
+                    <select id="res-parking" name="res-parking" required>
+                        <option value="None">None</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5+">5+</option>
+                    </select>
+                </div> 
             </div>
-
             <!-- Rooms and Sqft -->
             <div class="form-row res-rooms_sqft">
                 <!-- Rooms Dropdown -->
@@ -127,9 +140,6 @@
                     <label class="res-ammenities_checkbox">
                         <input type="checkbox" name="res-ammenities[]" value="Pool" /> 
                         Pool</label>
-                    <label class="res-ammenities_checkbox">
-                        <input type="checkbox" name="res-ammenities[]" value="Parking" /> 
-                        Parking</label>
                     <label class="res-ammenities_checkbox">
                         <input type="checkbox" name="res-ammenities[]" value="Garden" /> 
                         Garden</label>

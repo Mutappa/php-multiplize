@@ -23,7 +23,7 @@ a {
 /* ----- Side Bar ----- */
 
 .side_bar {
-    width: 15%;
+    width: 10%;
     background-color: inherit;
 }
 
@@ -116,7 +116,7 @@ ul.sidebar_items {
 /* ---- Content body ----- */
 
 .content_body {
-    width: 85%;
+    width: 90%;
     font-size: 14px;
     background-color: #eee;
     border-radius: 10px;
@@ -234,7 +234,7 @@ ul.sidebar_items {
 /* ---- listing content ---- */
 
 .listing_content {
-    font-size: 11px;
+    font-size: 12px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -305,6 +305,11 @@ td.options_box a i {
     font-size: 11px;
     padding: 0 0px 0 0;
     font-family: monospace;
+}
+
+i.fas.fa-parking {
+    color: #fad300;
+    margin: 5px 5px 0 0px;
 }
 
 /*---- Delete and Edit ----*/
