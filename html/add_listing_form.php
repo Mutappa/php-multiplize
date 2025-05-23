@@ -65,7 +65,7 @@
                             <input type="radio" class="res-configuration" name="res-configuration" value="Villa" /> 
                             Villa</label>
                         <label>
-                            <input type="radio" class="res-configuration"  name="res-configuration" value="Appartement" /> Appartement</label>
+                            <input type="radio" class="res-configuration"  name="res-configuration" value="Apartment" /> Apartment</label>
                         <label>
                             <input type="radio" class="res-configuration"  name="res-configuration" value="Row House" /> Row House</label>
                     </div>
