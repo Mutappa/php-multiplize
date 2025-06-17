@@ -16,6 +16,9 @@
                             <li>
                                 <a class="subMenu_redirect" href="../html/commercial_table.php"><i class="fa fa-circle-o"></i>Commerial</a>
                             </li>
+                            <li>
+                                <a class="subMenu_redirect" href="../html/potential-buyers.php"><i class="fa fa-circle-o"></i>Potential Buyers</a>
+                            </li>
                         </ul>
                     </li>  
                     <!-- <li class="tab2 a_tags">
