@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(!isset($_SESSION['user'])) header('location:login.php');
+    if(!isset($_SESSION['user'])) header('location:../login.php');
 
     // $_SESSION['table'] = 'listingresidential';
     $user = $_SESSION['user'];
@@ -14,12 +14,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Property Submission Form</title>
-  <link rel="stylesheet" href="../assets/css/form.css" />
+  <link rel="stylesheet" href="../../assets/css/form.css" />
 </head>
 <body>
     <div class="form-container">
         <h2>Residential Property Submission</h2>
-        <form action="../database/add_listing.php" class="listing_form" id="res-listing_form" method="POST">
+        <form action="../../database/add_listing.php" class="listing_form" id="res-listing_form" method="POST">
             <!-- Name & Phone -->
             <div class="form-row res-name_phone">
                 <div class="form-group res-name_group">

@@ -24,7 +24,7 @@
     
     try {    
         $insert_method = "INSERT INTO
-                            listingresidential(res_name,
+                            potential(res_name,
                                         res_phone,
                                         building_name,
                                         locality,

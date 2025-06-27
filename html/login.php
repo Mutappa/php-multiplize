@@ -22,7 +22,7 @@
             $_SESSION['user'] = $user;
             var_dump($_SESSION['user']);
             
-            header('Location:residential_table.php');
+            header('Location:tables/residential_table.php');
 
         } else $error_message = 'PLease make sure that username and password are correct.';
     }

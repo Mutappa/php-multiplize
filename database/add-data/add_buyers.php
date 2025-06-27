@@ -71,7 +71,7 @@
         }
     
     $_SESSION['response'] = $response;
-    header('location:../html/residential_table.php');
+    header('location:../html/tables/residential_table.php');
     // var_dump($insert_method);
 
 ?>

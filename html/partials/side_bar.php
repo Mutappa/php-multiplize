@@ -1,6 +1,6 @@
 <div class="side_bar">
                 <div class="dashboard_owner_container">
-                    <img src="../assets/images/logo-1.webp" alt="owner Name">
+                    <img src="../../assets/images/logo-1.webp" alt="owner Name">
                 </div>
                 <ul class="sidebar_items">
                     <li class="tab1 a_tags showHideSubmenu">   
@@ -11,13 +11,13 @@
                         </a>
                         <ul class="subMenu">
                             <li>
-                                <a class="subMenu_redirect" href="../html/residential_table.php"><i class="fa fa-circle-o"></i>Residential</a>
+                                <a class="subMenu_redirect" href="../tables/buyers.php"><i class="fa fa-circle-o"></i>Buyers</a>
                             </li>
                             <li>
-                                <a class="subMenu_redirect" href="../html/commercial_table.php"><i class="fa fa-circle-o"></i>Commerial</a>
+                                <a class="subMenu_redirect" href="../tables/renters.php"><i class="fa fa-circle-o"></i>Renters</a>
                             </li>
                             <li>
-                                <a class="subMenu_redirect" href="../html/potential-buyers.php"><i class="fa fa-circle-o"></i>Potential Buyers</a>
+                                <a class="subMenu_redirect" href="../tables/potential-buyers.php"><i class="fa fa-circle-o"></i>Potential Buyers</a>
                             </li>
                         </ul>
                     </li>  

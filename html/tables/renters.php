@@ -4,8 +4,8 @@
 
     //add all listings
     $user = $_SESSION['user'];
-    $Reslistings = include('../database/fetch_res-listing.php');
-    // var_dump($listings);
+    $renters = include('../../database/fetch-data/fetch_renters.php');
+    // var_dump($commerlistings);
     // die;
 
 ?>
@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../assets/css/dashboard.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" rel="stylesheet">
-    <title>Residential Listings</title>
+    <title>Commercial Listings</title>
     <script src="https://kit.fontawesome.com/83d4dd4455.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -27,7 +27,7 @@
             <div class="content_box">
                 <div class="content_header">
                     <div class="add_listing_form">
-                        <a href="add_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
+                        <a href="comm_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
                     </div>
                 </div>
                 <div class="listing_content">
@@ -44,34 +44,30 @@
                                     <th>Config</th>
                                     <th>Sqft</th>
                                     <th>Ammenities</th>
-                                    <th>Price</th>
+                                    <th>Availabilty</th>
                                     <th>Remarks</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($Reslistings as $index => $user){?>
+                                <?php foreach($renters as $index => $user){?>
                                     <tr>
-                                        <td><?= $index + 1?></td>
-                                        <td><?= $user['res_name'] ?>
+                                        <td><?= $index + 1 ?></td>
+                                        <td><?= $user['name'] ?>
                                             <br>
-                                            <span class="sub_span"><?= $user['res_phone'] ?></span>
+                                            <span class="sub_span"><?= $user['phone'] ?></span></td>
                                         </td>
-                                        <td><?= $user['building_name'] ?>
+                                        <td><?= $user['building_lot'] ?>
                                             <br>
-                                            <span class="sub_span"><?= $user['locality'] ?></span>
-                                        </td>
+                                            <span class="sub_span"><?= $user['locality'] ?></span></td>
                                         <td><?= $user['address'] ?></td>
                                         <td><?= $user['pincode'] ?></td>
-                                        <td><?= $user['configuration'] ?>
-                                            <br>
-                                            <span class="sub_span"><?= $user['rooms'] ?></span>
-                                        </td>
+                                        <td><?= $user['configuration'] ?></td>
                                         <td><?= $user['sqft'] ?>
                                             <br>
                                             <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
                                         </td>
-                                        <td><?= $user['ammenities'] ?></td>
+                                        <td><?= $user['perks'] ?></td>
                                         <td><?= $user['availability'] ?>
                                             <br>
                                             <span class="sub_span">₹<?= $user['price'] ?>
@@ -79,8 +75,8 @@
                                         </td>
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="" class="edit_listing update_resListing"><i class="fa fa-pencil"></i>Edit</a>
-                                        <a href="../database/delete_listing.php" class="delete_listing del_resListing" data-userid="<?= $user['id']?>"><i class="fa fa-trash"></i>Delete</a>
+                                        <a href="" class="edit_listing update_commListing"><i class="fa fa-pencil"></i>Edit</a>
+                                        <a href="" class="delete_listing del_commListing" data-userid="<?= $user['id']?>"><i class="fa fa-trash"></i>Delete</a>
                                     </td>
                                 </tr>
                                 <?php } ?>
@@ -110,6 +106,6 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="../../assets/js/script.js"></script>
 </body>
 </html>

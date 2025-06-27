@@ -1,11 +1,11 @@
 <?php 
     session_start();
-    if(!isset($_SESSION['user']))header('location:login.php');
+    if(!isset($_SESSION['user']))header('location:../login.php');
 
     //add all listings
     $user = $_SESSION['user'];
-    $commerlistings = include('../database/fetch_commercial.php');
-    // var_dump($commerlistings);
+    $Buyers = include('../../database/fetch-data/fetch_buyers.php');
+    // var_dump($listings);
     // die;
 
 ?>
@@ -15,19 +15,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../assets/css/dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/dashboard.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" rel="stylesheet">
-    <title>Commercial Listings</title>
+    <title>Buyers Listings</title>
     <script src="https://kit.fontawesome.com/83d4dd4455.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="main_body">
-        <?php include('partials/side_bar.php'); ?>
+        <?php include('../partials/side_bar.php'); ?>
         <div class="content_body">
             <div class="content_box">
                 <div class="content_header">
                     <div class="add_listing_form">
-                        <a href="comm_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
+                        <a href="../forms/add_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
                     </div>
                 </div>
                 <div class="listing_content">
@@ -44,30 +44,34 @@
                                     <th>Config</th>
                                     <th>Sqft</th>
                                     <th>Ammenities</th>
-                                    <th>Availabilty</th>
+                                    <th>Price</th>
                                     <th>Remarks</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($commerlistings as $index => $user){?>
+                                <?php foreach($Buyers as $index => $user){?>
                                     <tr>
-                                        <td><?= $index + 1 ?></td>
-                                        <td><?= $user['name'] ?>
+                                        <td><?= $index + 1?></td>
+                                        <td><?= $user['res_name'] ?>
                                             <br>
-                                            <span class="sub_span"><?= $user['phone'] ?></span></td>
+                                            <span class="sub_span"><?= $user['res_phone'] ?></span>
                                         </td>
-                                        <td><?= $user['building_lot'] ?>
+                                        <td><?= $user['building_name'] ?>
                                             <br>
-                                            <span class="sub_span"><?= $user['locality'] ?></span></td>
+                                            <span class="sub_span"><?= $user['locality'] ?></span>
+                                        </td>
                                         <td><?= $user['address'] ?></td>
                                         <td><?= $user['pincode'] ?></td>
-                                        <td><?= $user['configuration'] ?></td>
+                                        <td><?= $user['configuration'] ?>
+                                            <br>
+                                            <span class="sub_span"><?= $user['rooms'] ?></span>
+                                        </td>
                                         <td><?= $user['sqft'] ?>
                                             <br>
                                             <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
                                         </td>
-                                        <td><?= $user['perks'] ?></td>
+                                        <td><?= $user['ammenities'] ?></td>
                                         <td><?= $user['availability'] ?>
                                             <br>
                                             <span class="sub_span">₹<?= $user['price'] ?>
@@ -75,8 +79,8 @@
                                         </td>
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="" class="edit_listing update_commListing"><i class="fa fa-pencil"></i>Edit</a>
-                                        <a href="" class="delete_listing del_commListing" data-userid="<?= $user['id']?>"><i class="fa fa-trash"></i>Delete</a>
+                                        <a href="" class="edit_listing update_resListing"><i class="fa fa-pencil"></i>Edit</a>
+                                        <a href="../database/delete_listing.php" class="delete_listing del_resListing" data-userid="<?= $user['id']?>"><i class="fa fa-trash"></i>Delete</a>
                                     </td>
                                 </tr>
                                 <?php } ?>
@@ -106,6 +110,6 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="../../assets/js/script.js"></script>
 </body>
 </html>
