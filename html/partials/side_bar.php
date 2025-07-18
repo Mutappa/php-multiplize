@@ -14,7 +14,7 @@
                                 <a class="subMenu_redirect" href="../tables/buyers.php"><i class="fa fa-circle-o"></i>Buyers</a>
                             </li>
                             <li>
-                                <a class="subMenu_redirect" href="../tables/renters.php"><i class="fa fa-circle-o"></i>Renters</a>
+                                <a href="../tables/renters.php" class="subMenu_redirect"><i class="fa fa-circle-o"></i>Renters</a>
                             </li>
                             <li>
                                 <a class="subMenu_redirect" href="../tables/potential-buyers.php"><i class="fa fa-circle-o"></i>Potential Buyers</a>
@@ -28,7 +28,7 @@
                     </li> -->
                 </ul>
                 <div class="logout_button">
-                    <a href="logout.php">
+                    <a href="../logout.php">
                         <i class="fa fa-power-off" aria-hidden="true"></i>
                     logout
                     </a>

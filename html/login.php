@@ -2,11 +2,11 @@
 
     session_start();
 
-    if(isset($_SESSION['user']))header('location:mainDashboard.php');
+    if(isset($_SESSION['user']))header('location:tables/buyers.php');
 
     $error_message = '' ;
     if($_POST) {
-        include('../database/connections.php');
+        include('../connections.php');
         
         $username = $_POST['userName'];
         $password = $_POST['passName'];
@@ -22,7 +22,7 @@
             $_SESSION['user'] = $user;
             var_dump($_SESSION['user']);
             
-            header('Location:tables/residential_table.php');
+            header('Location:tables/buyers.php');
 
         } else $error_message = 'PLease make sure that username and password are correct.';
     }

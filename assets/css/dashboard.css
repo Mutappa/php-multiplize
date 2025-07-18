@@ -116,12 +116,12 @@ ul.sidebar_items {
 /* ---- Content body ----- */
 
 .content_body {
-    width: 90%;
+    width: -webkit-fill-available;
     font-size: 14px;
-    background-color: #eee;
-    border-radius: 10px;
+    background-color: #deac63;
     min-height: 100vh;
     overflow: auto;
+    box-shadow: inset 0px 0px 3px 0px #3f2704;
 }
 
 .content_box {
@@ -279,6 +279,11 @@ div#listingTable_wrapper {
 th{
     padding: 10px;
     text-align: left;
+}
+
+td {
+    padding: 10px;
+    text-align: justify;
 }
 
 td.options_box {

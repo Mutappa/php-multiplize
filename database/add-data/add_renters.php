@@ -5,55 +5,55 @@
     
     $table_name = $_SESSION['table'];
 
-    $comm_name = $_POST['comm-name'];
-    $phone_number = $_POST['comm-phone'];
-    $building_name = $_POST['comm-building_name'];
-    $locality = $_POST['comm-locality'];
-    $address = $_POST['comm-address'];
-    $pincode = $_POST['comm-pincode'];
-    $configuration = $_POST['comm-configuration'];
-    $sqft = $_POST['comm-sqft'];
-    $parking = $_POST['comm-parking'];
-    $availability = $_POST['comm-availability'];
-    $price = $_POST['comm-price'];
+    $name = $_POST['renter-name'];
+    $phone_number = $_POST['renter-phone'];
+    $building_name = $_POST['renter-building_name'];
+    $locality = $_POST['renter-locality'];
+    $address = $_POST['renter-address'];
+    $pincode = $_POST['renter-pincode'];
+    $configuration = $_POST['renter-configuration'];
+    $rooms = $_POST['renter-rooms'];
+    $sqft = $_POST['renter-sqft'];
+    $parking = $_POST['renter-parking'];
+    $price = $_POST['renter-price'];
     //convert ammenities to string
-    $ammenities = implode(',', $_POST['comm-ammenities']);
-    $remarks = $_POST['comm-remarks'];
+    $ammenities = implode(',', $_POST['renter-ammenities']);
+    $remarks = $_POST['renter-remarks'];
     // die;
     
     try {    
         $insert_method = "INSERT INTO
                             $table_name(name,
                                         phone,
-                                        building_lot,
+                                        building_name,
                                         locality,
                                         address,
                                         pincode,
                                         configuration,
+                                        rooms,
                                         sqft,
                                         parking,
-                                        availability,
                                         price,
-                                        perks,
+                                        ammenities,
                                         remarks,
                                         date)
                      VALUES 
-                            ('".$comm_name."',
+                            ('".$name."',
                              '".$phone_number."',
                              '".$building_name."',
                              '".$locality."',
                              '".$address."',
                              '".$pincode."',
                              '".$configuration."',
+                             '".$rooms."',
                              '".$sqft."',
-                             '".$parking."',  
-                             '".$availability."',
-                             '".$ammenities."',
+                             '".$parking."',
                              '".$price."',
+                             '".$ammenities."',
                              '".$remarks."',
                                 NOW())";
 
-        include('connections.php');
+        include('../../connections.php');
         // var_dump($insert_method);
         $conn->exec($insert_method);
         $response = [
@@ -68,7 +68,7 @@
         }
     
     $_SESSION['response'] = $response;
-    header('location:../html/commercial_table.php');
+    header('location:../../html/tables/renters.php');
     // var_dump($insert_method);
 
 ?>

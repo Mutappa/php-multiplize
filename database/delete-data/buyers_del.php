@@ -4,7 +4,7 @@
 
     try {    
         $delete_method = "DELETE FROM buyers WHERE id={$user_id}";
-        include('connections.php');
+        include('../../connections.php');
 
         $conn->exec($delete_method);
 

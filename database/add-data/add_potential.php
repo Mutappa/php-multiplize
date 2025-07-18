@@ -3,75 +3,55 @@
     session_start();
     // var_dump($_POST);
     
+    include('../../connections.php'); 
     // $table_name = $_SESSION['table'];
 
-    $res_name = $_POST['res-name'];
-    $phone_number = $_POST['res-phone'];
-    $building_name = $_POST['res-building_name'];
-    $locality = $_POST['res-locality'];
-    $address = $_POST['res-address'];
-    $pincode = $_POST['res-pincode'];
-    $configuration = $_POST['res-configuration'];
-    $rooms = $_POST['res-rooms'];
-    $sqft = $_POST['res-sqft'];
-    $parking = $_POST['res-parking'];
-    $availability = $_POST['res-availability'];
-    $price = $_POST['res-price'];
-    //convert ammenities to string
-    $ammenities = implode(',', $_POST['res-ammenities']);
-    $remarks = $_POST['res-remarks'];
+    $name = $_POST['potential-name'];
+    $phone_number = $_POST['potential-phone'];
+    $configuration = $_POST['potential-configuration'];
+    $rooms = $_POST['potential-rooms'];
+    $sqft = $_POST['potential-sqft'];
+    $price = $_POST['potential-price'];
+    $remarks = $_POST['potential-remarks'];
     // die;
-    
-    try {    
-        $insert_method = "INSERT INTO
-                            potential(res_name,
-                                        res_phone,
-                                        building_name,
-                                        locality,
-                                        address,
-                                        pincode,
-                                        configuration,
-                                        rooms,
-                                        sqft,
-                                        parking,
-                                        availability,
-                                        ammenities,
-                                        price,
-                                        remarks,
-                                        date)
-                     VALUES 
-                            ('".$res_name."',
-                             '".$phone_number."',
-                             '".$building_name."',
-                             '".$locality."',
-                             '".$address."',
-                             '".$pincode."',
-                             '".$configuration."',
-                             '".$rooms."',
-                             '".$sqft."',
-                             '".$parking."',
-                             '".$availability."',
-                             '".$ammenities."',
-                             '".$price."',
-                             '".$remarks."',
-                                NOW())";
 
-        include('connections.php');
-        // var_dump($insert_method);
-        $conn->exec($insert_method);
-        $response = [
-            'success' => true,
-            'message' => 'Listing has been added succesfully'
-            ];
-    } catch (PDOException $e){
-            $response = [
-                'success' => false,
-                'message' => $e->getMessage()
-            ];
-        }
-    
-    $_SESSION['response'] = $response;
-    header('location:../html/residential_table.php');
-    // var_dump($insert_method);
+    try {
+    $stmt = $conn->prepare("INSERT INTO potential
+                                (name, 
+                                phone,
+                                configuration,
+                                rooms, 
+                                sqft, 
+                                price, 
+                                remarks, 
+                                date)
+                            VALUES 
+                                (:name, 
+                                 :phone, 
+                                 :configuration,
+                                 :rooms, 
+                                 :sqft, 
+                                 :price, 
+                                 :remarks, 
+                                 NOW())"
+    );
+
+    $stmt->execute([
+        ':name' => $name,
+        ':phone' => $phone_number,
+        ':configuration' => $configuration,
+        ':rooms' => $rooms,
+        ':sqft' => $sqft,
+        ':price' => $price,
+        ':remarks' => $remarks
+    ]);
+
+    echo "<script>
+      alert('Potential Buyer added successfully.');
+      window.location.href = '/php-multiplize/html/tables/potential-buyers.php';
+    </script>";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 
 ?>

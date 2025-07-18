@@ -12,7 +12,8 @@ function deletListing(){
             targetElement = e.target;
             classList = targetElement.classList;
             
-            if(classList.contains('del_resListing')){
+            // BUYERS DELETE FUNCTION !!
+            if(classList.contains('del_buyers')){
                 e.preventDefault();
                 userId = targetElement.dataset.userid;
                 console.log(userId);
@@ -23,7 +24,7 @@ function deletListing(){
                         data: {
                             user_id: userId
                         },
-                        url: '../database/delete_listing.php',
+                        url: '../../database/delete-data/buyers_del.php',
                         dataType:'json',
                         success: function(data){
                             if(data.success){
@@ -38,7 +39,8 @@ function deletListing(){
                 }
             }
 
-            if(classList.contains('del_commListing')){
+            // RENTERS DELETE FUNCTION !!
+            if(classList.contains('del_renters')){
                 e.preventDefault();
                 userId = targetElement.dataset.userid;
                 console.log(userId);
@@ -49,7 +51,34 @@ function deletListing(){
                         data: {
                             user_id: userId
                         },
-                        url: '../database/delete_commListing.php',
+                        url: '../../database/delete-data/renters_del.php',
+                        dataType:'json',
+                        success: function(data){
+                            if(data.success){
+                                if(window.confirm(data.message)){
+                                    location.reload();
+                                }
+                            } else window.alert(data.message);
+                        }
+                    })
+                } else {
+                    console.log('Listing Saved');
+                }
+            }
+
+            // POTENTIAL DELETE FUNCTION !!
+            if(classList.contains('del_potential')){
+                e.preventDefault();
+                userId = targetElement.dataset.userid;
+                console.log(userId);
+
+                if(window.confirm('This will permanently delete your listing!')){
+                    $.ajax({
+                        method: 'POST',
+                        data: {
+                            user_id: userId
+                        },
+                        url: '../../database/delete-data/potential_del.php',
                         dataType:'json',
                         success: function(data){
                             if(data.success){
@@ -67,19 +96,6 @@ function deletListing(){
         })
     }
 };
-
-// function updateListing(){
-    
-//     this.intialize = function(){
-//         this.registerEvents();
-//     },
-    
-//     this.registerEvents = function(){
-
-//     // insert data row data from table to form
-
-
-// }
 
 // change background color of sidebar items on hover
 // sidebarItems = document.querySelectorAll('.tab1,.tab2');
@@ -120,6 +136,7 @@ new DataTable('#listingTable', {
         return: true
     }
 });
+
 
 var deletListing = new deletListing;
 deletListing.intialize();

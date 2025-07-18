@@ -8,6 +8,20 @@
     // var_dump($commerlistings);
     // die;
 
+    // Function to format numbers in Indian style
+    function indian_number_format($num) {
+    $num = (string) $num;
+    $len = strlen($num);
+    if($len > 3){
+        $last3 = substr($num, -3);
+        $restUnits = substr($num, 0, $len - 3);
+        $restUnits = preg_replace("/\B(?=(\d{2})+(?!\d))/", ",", $restUnits);
+        $formatted = $restUnits . "," . $last3;
+    } else {
+        $formatted = $num;
+    }
+    return $formatted;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,19 +29,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../assets/css/dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/dashboard.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" rel="stylesheet">
     <title>Commercial Listings</title>
     <script src="https://kit.fontawesome.com/83d4dd4455.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="main_body">
-        <?php include('partials/side_bar.php'); ?>
+        <?php include('../partials/side_bar.php'); ?>
         <div class="content_body">
             <div class="content_box">
                 <div class="content_header">
                     <div class="add_listing_form">
-                        <a href="comm_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
+                        <a href="../forms/renters_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
                     </div>
                 </div>
                 <div class="listing_content">
@@ -40,11 +54,10 @@
                                     <th>Building</th>
                                     <!-- <th>Locality</th> -->
                                     <th>Address</th>
-                                    <th>Pincode</th>
                                     <th>Config</th>
                                     <th>Sqft</th>
                                     <th>Ammenities</th>
-                                    <th>Availabilty</th>
+                                    <th>Price</th>
                                     <th>Remarks</th>
                                     <th>Options</th>
                                 </tr>
@@ -57,26 +70,38 @@
                                             <br>
                                             <span class="sub_span"><?= $user['phone'] ?></span></td>
                                         </td>
-                                        <td><?= $user['building_lot'] ?>
+                                        <td><?= $user['building_name'] ?>
                                             <br>
                                             <span class="sub_span"><?= $user['locality'] ?></span></td>
-                                        <td><?= $user['address'] ?></td>
-                                        <td><?= $user['pincode'] ?></td>
-                                        <td><?= $user['configuration'] ?></td>
-                                        <td><?= $user['sqft'] ?>
+                                        <td><?= $user['address'] ?>
+                                            <br>
+                                            <span class="sub_span"><?= $user['pincode'] ?></span>
+                                        </td>
+                                        <td><?= $user['configuration'] ?>
+                                            <br>
+                                            <span class="sub_span"><?= $user['rooms'] ?></span>
+                                        </td>
+                                        <td><?= ($user['sqft'] === null || $user['sqft'] === '' || $user['sqft'] == 0)
+                                                ? '----------'
+                                                : indian_number_format($user['sqft']) ?>
+                                        </td>
+                                        <td>
+                                            ₹<?= ($user['price'] === null || $user['price'] === '' || $user['price'] == 0)
+                                                ? '----------'
+                                                : indian_number_format($user['price']) ?>
+                                        </td>
+                                        <td><?= $user['ammenities'] ?>
                                             <br>
                                             <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
                                         </td>
-                                        <td><?= $user['perks'] ?></td>
-                                        <td><?= $user['availability'] ?>
-                                            <br>
-                                            <span class="sub_span">₹<?= $user['price'] ?>
-                                            </span>
-                                        </td>
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="" class="edit_listing update_commListing"><i class="fa fa-pencil"></i>Edit</a>
-                                        <a href="" class="delete_listing del_commListing" data-userid="<?= $user['id']?>"><i class="fa fa-trash"></i>Delete</a>
+                                        <a href="/php-multiplize/html/forms/edit_rentersForm.php?id=<?= $user['id'] ?>" class="edit_listing">
+                                            <i class="fa fa-pencil"></i>Edit
+                                        </a>
+                                        <a href="../../database/delete-data/renters_del.php" class="delete_listing del_renters" data-userid="<?= $user['id']?>">
+                                            <i class="fa fa-trash"></i>Delete
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php } ?>
@@ -84,23 +109,6 @@
                         </table>
                     </div>
             </div>
-        </div>
-        <div class="response_box">
-                <?php 
-                    if(isset($_SESSION['response'])){
-                        $response_message = $_SESSION['response']['message'];
-                        $listing_add = $_SESSION['response']['message'];
-                    ?>
-                    <div class="response_message">
-                        <p class="<?= $listing_add ? 'responseMessage_success' : 'responseMessage_error ?' ?> ">
-                        <?= $response_message ?>
-                        </p>
-                        <span onclick="this.parentElement.style.display='none';">
-                        <i class="fa-regular fa-circle-xmark"></i>
-                        </span>
-                    </div>
-                <?php unset($_SESSION['response']); } ?>
-        
         </div>
     </div>
 
