@@ -5,25 +5,26 @@
     
     // $table_name = $_SESSION['table'];
 
-    $res_name = $_POST['buyer-name'];
-    $phone_number = $_POST['buyer-phone'];
-    $building_name = $_POST['buyer-building_name'];
-    $locality = $_POST['buyer-locality'];
-    $address = $_POST['buyer-address'];
-    $pincode = $_POST['buyer-pincode'];
-    $configuration = $_POST['buyer-configuration'];
-    $rooms = $_POST['buyer-rooms'];
-    $sqft = $_POST['buyer-sqft'];
-    $parking = $_POST['buyer-parking'];
-    $price = $_POST['buyer-price'];
+    $name = $_POST['seller-name'];
+    $phone_number = $_POST['seller-phone'];
+    $building_name = $_POST['seller-building_name'];
+    $locality = $_POST['seller-locality'];
+    $address = $_POST['seller-address'];
+    $pincode = $_POST['seller-pincode'];
+    $configuration = $_POST['seller-configuration'];
+    $rooms = $_POST['seller-rooms'];
+    $sqft = $_POST['seller-sqft'];
+    $parking = $_POST['seller-parking'];
+    $price = $_POST['seller-price'];
+    $site_visit = $_POST['seller-site_visit'] ;
     //convert ammenities to string
-    $ammenities = implode(',', $_POST['buyer-ammenities']);
-    $remarks = $_POST['buyer-remarks'];
+    $ammenities = implode(',', $_POST['seller-ammenities']);
+    $remarks = $_POST['seller-remarks'];
     // die;
     
     try {    
         $insert_method = "INSERT INTO
-                            buyers(name,
+                            sellers(name,
                                         phone,
                                         building_name,
                                         locality,
@@ -35,10 +36,11 @@
                                         parking,
                                         ammenities,
                                         price,
+                                        site_visit,
                                         remarks,
                                         date)
                      VALUES 
-                            ('".$res_name."',
+                            ('".$name."',
                              '".$phone_number."',
                              '".$building_name."',
                              '".$locality."',
@@ -50,19 +52,17 @@
                              '".$parking."',
                              '".$ammenities."',
                              '".$price."',
+                             '".$site_visit."', 
                              '".$remarks."',
                                 NOW())";
 
         include('../../connections.php');
         // var_dump($insert_method);
         $conn->exec($insert_method);
-        echo "<script>window.location.href = '/php-multiplize/html/tables/buyers.php'; alert('Buyer added successfully.');</script>";
+        echo "<script>window.location.href = '/php-multiplize/html/tables/sellers.php'; alert('seller added successfully.');</script>";
         exit;
     } catch (PDOException $e){
-            $response = [
-                'success' => false,
-                'message' => $e->getMessage()
-            ];
+            echo "Error: " . $e->getMessage();
         }
 
 ?>

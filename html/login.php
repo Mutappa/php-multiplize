@@ -2,7 +2,7 @@
 
     session_start();
 
-    if(isset($_SESSION['user']))header('location:tables/buyers.php');
+    if(isset($_SESSION['user']))header('location:tables/sellers.php');
 
     $error_message = '' ;
     if($_POST) {
@@ -22,7 +22,7 @@
             $_SESSION['user'] = $user;
             var_dump($_SESSION['user']);
             
-            header('Location:tables/buyers.php');
+            header('Location:tables/sellers.php');
 
         } else $error_message = 'PLease make sure that username and password are correct.';
     }

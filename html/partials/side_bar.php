@@ -11,13 +11,16 @@
                         </a>
                         <ul class="subMenu">
                             <li>
-                                <a class="subMenu_redirect" href="../tables/buyers.php"><i class="fa fa-circle-o"></i>Buyers</a>
+                                <a class="subMenu_redirect" href="../tables/sellers.php"><i class="fa fa-circle-o"></i>Sellers</a>
                             </li>
                             <li>
                                 <a href="../tables/renters.php" class="subMenu_redirect"><i class="fa fa-circle-o"></i>Renters</a>
                             </li>
                             <li>
                                 <a class="subMenu_redirect" href="../tables/potential-buyers.php"><i class="fa fa-circle-o"></i>Potential Buyers</a>
+                            </li>
+                            <li>
+                                <a class="subMenu_redirect" href="../tables/site_visit.php"><i class="fa fa-circle-o"></i>Site Visit</a>
                             </li>
                         </ul>
                     </li>  

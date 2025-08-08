@@ -15,8 +15,8 @@
     $rooms = $_POST['renter-rooms'];
     $sqft = $_POST['renter-sqft'];
     $parking = $_POST['renter-parking'];
+    $visit_date = $_POST['renter-date'];
     $price = $_POST['renter-price'];
-    $site_visit = $_POST['renter-site_visit'];
     //convert ammenities to string
     $ammenities = implode(',', $_POST['renter-ammenities']);
     $remarks = $_POST['renter-remarks'];
@@ -34,8 +34,8 @@
                                         rooms,
                                         sqft,
                                         parking,
+                                        visit_date,
                                         price,
-                                        site_visit,
                                         ammenities,
                                         remarks,
                                         date)
@@ -50,8 +50,8 @@
                              '".$rooms."',
                              '".$sqft."',
                              '".$parking."',
+                             '".$visit_date."',
                              '".$price."',
-                             '".$site_visit."', 
                              '".$ammenities."',
                              '".$remarks."',
                                 NOW())";
@@ -59,10 +59,19 @@
         include('../../connections.php');
         // var_dump($insert_method);
         $conn->exec($insert_method);
-        echo "<script>window.location.href = '/php-multiplize/html/tables/renters.php'; alert('Renter added successfully.');</script>";
-        exit;
+        $response = [
+            'success' => true,
+            'message' => 'Listing has been added succesfully'
+            ];
     } catch (PDOException $e){
-            echo "Error: " . $e->getMessage();
+            $response = [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
         }
+    
+    $_SESSION['response'] = $response;
+    header('location:../../html/tables/site_visit.php');
+    // var_dump($insert_method);
 
 ?>

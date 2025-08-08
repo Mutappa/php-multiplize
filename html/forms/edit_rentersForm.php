@@ -21,6 +21,7 @@ $renter = [
   'rooms' => '',
   'sqft' => '',
   'price' => '',
+  'site_visit' => '',
   'ammenities' => '',
   'remarks' => ''
 ];
@@ -88,7 +89,7 @@ if (!empty($renter['ammenities'])) {
     <!-- Input for adress -->
     <div class="form-group">
       <label for="edit_renter-address">Address</label>
-      <textarea id="edit_renter-address" name="renter-address" class="input-field" value="<?= htmlspecialchars($renter['address']) ?>"></textarea> 
+      <textarea id="edit_renter-address" name="renter-address" class="input-field" value="<?= ($renter['address']) ?>"></textarea> 
     </div>
 
     <!-- Input for Pincode -->
@@ -157,19 +158,35 @@ if (!empty($renter['ammenities'])) {
 
     </div>
 
-    <div class="form-group">
-      <div class="edit_renter">
-        <label>Ammenities</label><br>
-        <label><input type="checkbox" name="renter-ammenities[]" value="Gym" <?= in_array('Gym', $ammenitiesArray) ? 'checked' : '' ?>> Gym</label>
-        <label><input type="checkbox" name="renter-ammenities[]" value="Pool" <?= in_array('Pool', $ammenitiesArray) ? 'checked' : '' ?>> Pool</label>
-        <label><input type="checkbox" name="renter-ammenities[]" value="security" <?= in_array('security', $ammenitiesArray) ? 'checked' : '' ?>> Security</label>
-        <label><input type="checkbox" name="renter-ammenities[]" value="Clubhouse" <?= in_array('Clubhouse', $ammenitiesArray) ? 'checked' : '' ?>> Clubhouse</label>
-        <label><input type="checkbox" name="renter-ammenities[]" value="Garden" <?= in_array('Garden', $ammenitiesArray) ? 'checked' : '' ?>> Garden</label>
-        <label><input type="checkbox" name="renter-ammenities[]" value="Play Area" <?= in_array('Play Area', $ammenitiesArray) ? 'checked' : '' ?>> Play Area</label>
-        <!-- Add more amenities as needed -->
+    <div class="form-row">
+      <!-- AMMENITIES -->
+      <div class="form-group">
+        <div class="edit_renter">
+          <label>Ammenities</label><br>
+          <label><input type="checkbox" name="renter-ammenities[]" value="Gym" <?= in_array('Gym', $ammenitiesArray) ? 'checked' : '' ?>> Gym</label>
+          <label><input type="checkbox" name="renter-ammenities[]" value="Pool" <?= in_array('Pool', $ammenitiesArray) ? 'checked' : '' ?>> Pool</label>
+          <label><input type="checkbox" name="renter-ammenities[]" value="security" <?= in_array('security', $ammenitiesArray) ? 'checked' : '' ?>> Security</label>
+          <label><input type="checkbox" name="renter-ammenities[]" value="Clubhouse" <?= in_array('Clubhouse', $ammenitiesArray) ? 'checked' : '' ?>> Clubhouse</label>
+          <label><input type="checkbox" name="renter-ammenities[]" value="Garden" <?= in_array('Garden', $ammenitiesArray) ? 'checked' : '' ?>> Garden</label>
+          <label><input type="checkbox" name="renter-ammenities[]" value="Play Area" <?= in_array('Play Area', $ammenitiesArray) ? 'checked' : '' ?>> Play Area</label>
+          <!-- Add more amenities as needed -->
+        </div>
       </div>
-    </div>
 
+      <!-- SITE VISIT -->
+       <div class="form-group">
+        <label>Site Visit</label>
+        <div class="renter-site_visit_group">
+            <label class="renter-site_visit_checkbox">
+                <input type="radio" name="renter-site_visit" value="Yes" <?= $renter['site_visit'] == 'Yes' ? 'checked' : '' ?> /> Yes
+            </label>
+            <label class="renter-site_visit_checkbox">
+                <input type="radio" name="renter-site_visit" value="No" <?= $renter['site_visit'] == 'No' ? 'checked' : '' ?> /> No
+            </label>
+        </div>
+      </div>
+      
+    </div>
 
     <div class="form-group">
       <label for="edit_renter-remarks">Remarks</label>

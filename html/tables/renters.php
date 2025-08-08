@@ -40,6 +40,7 @@
         <div class="content_body">
             <div class="content_box">
                 <div class="content_header">
+                    <h2>Renters list</h2>
                     <div class="add_listing_form">
                         <a href="../forms/renters_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
                     </div>
@@ -58,6 +59,7 @@
                                     <th>Sqft</th>
                                     <th>Ammenities</th>
                                     <th>Price</th>
+                                    <th>Site Visit</th>
                                     <th>Remarks</th>
                                     <th>Options</th>
                                 </tr>
@@ -85,25 +87,26 @@
                                                 ? '----------'
                                                 : indian_number_format($user['sqft']) ?>
                                         </td>
+                                        <td><?= $user['ammenities'] ?>
+                                            <br>
+                                            <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
+                                        </td>
                                         <td>
                                             ₹<?= ($user['price'] === null || $user['price'] === '' || $user['price'] == 0)
                                                 ? '----------'
                                                 : indian_number_format($user['price']) ?>
                                         </td>
-                                        <td><?= $user['ammenities'] ?>
-                                            <br>
-                                            <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
-                                        </td>
+                                        <td><?= $user['site_visit'] ?></td> 
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="/php-multiplize/html/forms/edit_rentersForm.php?id=<?= $user['id'] ?>" class="edit_listing">
-                                            <i class="fa fa-pencil"></i>Edit
-                                        </a>
-                                        <a href="../../database/delete-data/renters_del.php" class="delete_listing del_renters" data-userid="<?= $user['id']?>">
-                                            <i class="fa fa-trash"></i>Delete
-                                        </a>
-                                    </td>
-                                </tr>
+                                            <a href="/php-multiplize/html/forms/edit_rentersForm.php?id=<?= $user['id'] ?>" class="dropdown-item edit_icon">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a href="../../database/delete-data/renters_del.php" class="dropdown-item del_icon delete_listing  del_renters" data-userid="<?= $user['id'] ?>">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                         </table>

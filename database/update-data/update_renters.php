@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 include('../../connections.php');
 
 try {
@@ -23,6 +21,7 @@ try {
     'rooms' => $_POST['renter-rooms'] ?? '',
     'sqft' => $_POST['renter-sqft'] ?? '',
     'price' => $_POST['renter-price'] ?? '',
+    'site_visit' => $_POST['renter-site_visit'] ?? '',
     'ammenities' => isset($_POST['renter-ammenities']) ? implode(',', $_POST['renter-ammenities']) : '',
     'remarks' => $_POST['renter-remarks'] ?? ''
   ];
@@ -39,6 +38,7 @@ try {
     rooms = :rooms,
     sqft = :sqft,
     price = :price,
+    site_visit = :site_visit,
     ammenities = :ammenities,
     remarks = :remarks
     WHERE id = :id

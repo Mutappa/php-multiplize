@@ -41,6 +41,7 @@
         <div class="content_body">
             <div class="content_box">
                 <div class="content_header">
+                    <h2>Potential Buyers</h2>
                     <div class="add_listing_form">
                         <a href="../forms/potential_listing_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
                     </div>
@@ -78,14 +79,14 @@
 
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="/php-multiplize/html/forms/edit_potential.php?id=<?= $user['id'] ?>" class="edit_listing">
-                                            <i class="fa fa-pencil"></i>Edit
-                                        </a>
-                                        <a href="../../database/delete-data/potential_del.php" class="delete_listing del_potential" data-userid="<?= $user['id']?>">
-                                            <i class="fa fa-trash"></i>Delete
-                                        </a>
-                                    </td>
-                                </tr>
+                                            <a href="/php-multiplize/html/forms/edit_potential.php?id=<?= $user['id'] ?>" class="edit_listing edit_icon">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a href="../../database/delete-data/potential_del.php" class="del_potential del_icon" data-userid="<?= $user['id']?>">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                         </table>

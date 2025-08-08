@@ -3,7 +3,7 @@
     $user_id = (int)$data['user_id'];
 
     try {    
-        $delete_method = "DELETE FROM buyers WHERE id={$user_id}";
+        $delete_method = "DELETE FROM site_visit WHERE id={$user_id}";
         include('../../connections.php');
 
         $conn->exec($delete_method);
@@ -20,5 +20,3 @@
         ]);
         
         }
-
-

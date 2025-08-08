@@ -1,11 +1,11 @@
 <?php 
     session_start();
-    if(!isset($_SESSION['user']))header('location:../login.php');
+    if(!isset($_SESSION['user']))header('location:login.php');
 
     //add all listings
     $user = $_SESSION['user'];
-    $Buyers = include('../../database/fetch-data/fetch_buyers.php');
-    // var_dump($listings);
+    $visited = include('../../database/fetch-data/fetch-site_visit.php');
+    // var_dump($commerlistings);
     // die;
 
     // Function to format numbers in Indian style
@@ -22,7 +22,6 @@
     }
     return $formatted;
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../assets/css/dashboard.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-    <title>Buyers Listings</title>
+    <title>Sites Visited Listings</title>
     <script src="https://kit.fontawesome.com/83d4dd4455.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -42,8 +40,9 @@
         <div class="content_body">
             <div class="content_box">
                 <div class="content_header">
+                    <h2>Sites Visited</h2>
                     <div class="add_listing_form">
-                        <a href="../forms/buyers_form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
+                        <a href="../forms/site_visit-form.php"><i class="fa-solid fa-plus"></i> Add Listing </a>
                     </div>
                 </div>
                 <div class="listing_content">
@@ -59,24 +58,23 @@
                                     <th>Config</th>
                                     <th>Sqft</th>
                                     <th>Ammenities</th>
+                                    <th>Date of Visit</th>
                                     <th>Price</th>
                                     <th>Remarks</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($Buyers as $index => $user){?>
+                                <?php foreach($visited as $index => $user){?>
                                     <tr>
-                                        <td><?= $index + 1?></td>
-                                        <td class="listingName"><?= $user['name'] ?>
+                                        <td><?= $index + 1 ?></td>
+                                        <td><?= $user['name'] ?>
                                             <br>
-                                            <span class="sub_span"><?= $user['phone'] == 0 ? '.....' : $user['phone']?>
-                                            </span>
+                                            <span class="sub_span"><?= $user['phone'] ?></span></td>
                                         </td>
                                         <td><?= $user['building_name'] ?>
                                             <br>
-                                            <span class="sub_span"><?= $user['locality'] ?></span>
-                                        </td>
+                                            <span class="sub_span"><?= $user['locality'] ?></span></td>
                                         <td><?= $user['address'] ?>
                                             <br>
                                             <span class="sub_span"><?= $user['pincode'] ?></span>
@@ -85,26 +83,30 @@
                                             <br>
                                             <span class="sub_span"><?= $user['rooms'] ?></span>
                                         </td>
-                                        <td><?= $user['sqft'] ?></td>
-                                        <td><?= $user['ammenities'] ?>
-                                            <br>
-                                                <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
+                                        <td><?= ($user['sqft'] === null || $user['sqft'] === '' || $user['sqft'] == 0)
+                                                ? '----------'
+                                                : indian_number_format($user['sqft']) ?>
                                         </td>
                                         <td>
                                             ₹<?= ($user['price'] === null || $user['price'] === '' || $user['price'] == 0)
-                                                ? '.....'
+                                                ? '----------'
                                                 : indian_number_format($user['price']) ?>
+                                        </td>
+                                        <td><?=$user['visit_date']?></td>
+                                        <td><?= $user['ammenities'] ?>
+                                            <br>
+                                            <span class="sub_span"><i class="fas fa-parking"></i><?= $user['parking'] ?></span>
                                         </td>
                                         <td><?= $user['remarks'] ?></td>
                                         <td class="options_box">
-                                        <a href="/php-multiplize/html/forms/edit_buyers.php?id=<?= $user['id'] ?>" class="edit_listing"> 
-                                            <i class="fa fa-pencil"></i>Edit
-                                        </a>
-                                        <a href="../database/delete_listing.php" class="delete_listing del_buyers" data-userid="<?= $user['id']?>">
-                                            <i class="fa fa-trash"></i>Delete
-                                        </a>
-                                    </td>
-                                </tr>
+                                            <a href="/php-multiplize/html/forms/edit-site_visit.php?id=<?= $user['id'] ?>" class="edit_listing edit_icon">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a href="../../database/delete-data/site_visit_del.php" class="del-site_visit del_icon" data-userid="<?= $user['id'] ?>">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
@@ -112,7 +114,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
     <script src="../../assets/js/script.js"></script>

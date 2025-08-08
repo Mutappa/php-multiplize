@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_SESSION['user'])) header('location:login.php');
 
-    $_SESSION['table'] = 'renters';
+    $_SESSION['table'] = 'site_visit';
     $user = $_SESSION['user'];
 ?>
 
@@ -20,8 +20,8 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Renters Listings</h2>
-        <form action="../../database/add-data/add_renters.php" class="listing_form" id="renter-listing_form" method="POST">
+        <h2>Sites Visited Listings</h2>
+        <form action="../../database/add-data/add-site_visit.php" class="listing_form" id="site_visit-form" method="POST">
             <!-- Name & Phone -->
             <div class="form-row renter-name_phone">
                 <div class="form-group renter-name_group">
@@ -121,6 +121,13 @@
                 
             </div>
 
+            <div class="form-row">
+                <div class="form-group renter-date_group">
+                    <label for="renter-date">Date of Visit</label>
+                    <input type="date" id="renter-date" name="renter-date" />
+                </div>
+            </div>
+
             <!-- AMMENITIES -->
             <div class="form-row">
                 <div class="form-group renter-ammenities_parking">     
@@ -147,21 +154,7 @@
                             <input type="checkbox" name="renter-ammenities[]" value="Clubhouse" /> 
                             Clubhouse'</label>
                     </div> 
-                </div>
-                
-                <!-- SITE VISIT -->
-                <div class="form-group renter-site_visit_group">
-                    <label for="renter-site_visit">Site visit</label>
-                    <!-- radio button for yes and no -->
-                    <div class="renter-site_visit_radio">
-                        <label class="renter-site_visit_checkbox">
-                            <input type="radio" name="renter-site_visit" value="Yes" /> Yes
-                        </label>
-                        <label class="renter-site_visit_checkbox">
-                            <input type="radio" name="renter-site_visit" value="No" /> No
-                        </label>
-                    </div>
-                </div>
+                </div>  
             </div>
             <!-- Remarks -->
             <div class="form-group renter-remarks_group">
